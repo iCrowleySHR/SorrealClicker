@@ -1,8 +1,7 @@
-let cookies = 0;
-let upgrades = 0;
-let clickValue = 1;
-let autoClickers = 0;
-
+let cookies = parseInt(localStorage.getItem('cookies')) || 0;
+let upgrades = parseInt(localStorage.getItem('upgrades')) || 0;
+let clickValue = parseInt(localStorage.getItem('clickValue')) || 1;
+let autoClickers = parseInt(localStorage.getItem('autoClickers')) || 0;
 
 function updateUpgradeCost() {
     const upgradeCost = 10 * Math.pow(10, upgrades);
@@ -21,6 +20,7 @@ function clickCookie() {
     setTimeout(() => {
         document.getElementById('cookie').classList.remove('clicked');
     }, 200); // Tempo deve ser igual à duração da transição em milissegundos
+    saveToLocalStorage();
     
 }
 
@@ -32,10 +32,12 @@ function buyUpgrade() {
         clickValue *= 2;
         document.getElementById('cookie-count').innerText = cookies;
         updateUpgradeCost(); // Atualiza o custo do próximo upgrade
+        saveToLocalStorage();
         Swal.fire({
-            position: "bottom",
-            icon: "success",
-            title: "comprou o baguio",
+            imageUrl: "https://media.tenor.com/RbYAPGbyilAAAAAC/alegria-feliz.gif",
+            imageWidth: 400,
+            imageHeight: 400,
+            title: "Comprou o baguio",
             showConfirmButton: false,
             timer: 1000,
             backdrop: false,
@@ -49,11 +51,12 @@ function buyUpgrade() {
             }
         });    } else {
         Swal.fire({
-            position: "bottom",
-            icon: "error",
-            title: "sem cookie meu fio",
             showConfirmButton: false,
             timer: 1500,
+            imageUrl: "https://img.freepik.com/vetores-premium/rosto-de-emoji-pensativo-e-triste-ou-emoticon-3d-decepcionado_248162-149.jpg",
+            imageWidth: 400,
+            imageHeight: 400,
+            title: "Sem cookie meu fio",
             backdrop: false, // Desativa o backdrop para evitar problemas de sobreposição
             customClass: {
                 popup: 'your-custom-class', // Adicione uma classe personalizada para personalizar o estilo se necessário
@@ -75,9 +78,10 @@ function buyAutoClicker() {
         updateAutoClickerCost(); // Atualiza o custo do próximo auto clicker
         startAutoClicker(); // Inicia o novo auto clicker
         Swal.fire({
-            position: "bottom",
-            icon: "success",
-            title: "comprou o baguio",
+            imageUrl: "https://media.tenor.com/RbYAPGbyilAAAAAC/alegria-feliz.gif",
+            imageWidth: 400,
+            imageHeight: 400,
+            title: "Comprou o baguio",
             showConfirmButton: false,
             timer: 1000,
             backdrop: false,
@@ -92,9 +96,10 @@ function buyAutoClicker() {
         });
         } else {
         Swal.fire({
-            position: "bottom",
-            icon: "error",
-            title: "sem cookie meu fio",
+            imageUrl: "https://img.freepik.com/vetores-premium/rosto-de-emoji-pensativo-e-triste-ou-emoticon-3d-decepcionado_248162-149.jpg",
+            imageWidth: 400,
+            imageHeight: 400,
+            title: "Sem cookie meu fio",
             showConfirmButton: false,
             timer: 1000,
             backdrop: false,
@@ -121,5 +126,17 @@ function updateAutoClickerCost() {
     document.getElementById('auto-clicker-cost').innerText = autoClickerCost;
 }
 
+function saveToLocalStorage() {
+    localStorage.setItem('cookies', cookies);
+    localStorage.setItem('upgrades', upgrades);
+    localStorage.setItem('clickValue', clickValue);
+    localStorage.setItem('autoClickers', autoClickers);
+
+    document.getElementById('cookie-count').innerText = cookies;
+}
+
+
+
 // Chama esta função para inicializar o custo do upgrade
 updateUpgradeCost();
+saveToLocalStorage()
