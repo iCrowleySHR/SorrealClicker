@@ -1,0 +1,44 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    text-align: center;
+}
+
+#cookie {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    background-image: url('sorrealv1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.03s ease; /* Adiciona uma transição suave para a escala */
+}
+
+#score {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+button {
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#upgrade-info {
+    font-size: 16px;
+    margin-top: 10px;
+}
+#cookie.clicked {
+    transform: scale(1.08); /* Aumenta o tamanho do cookie quando clicado */
+}
