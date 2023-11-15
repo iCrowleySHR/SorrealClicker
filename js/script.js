@@ -24,6 +24,12 @@ function clickCookie() {
     
 }
 
+function resetlocalstorage() {
+    localStorage.clear();
+    location.reload();
+
+}
+
 function buyUpgrade() {
     const upgradeCost = 10 * Math.pow(10, upgrades);
     if (cookies >= upgradeCost) {
@@ -77,6 +83,7 @@ function buyAutoClicker() {
         document.getElementById('cookie-count').innerText = cookies;
         updateAutoClickerCost(); // Atualiza o custo do próximo auto clicker
         startAutoClicker(); // Inicia o novo auto clicker
+        saveToLocalStorage();
         Swal.fire({
             imageUrl: "https://media.tenor.com/RbYAPGbyilAAAAAC/alegria-feliz.gif",
             imageWidth: 400,
@@ -124,6 +131,7 @@ function startAutoClicker() {
 function updateAutoClickerCost() {
     const autoClickerCost = 50 * Math.pow(2, autoClickers);
     document.getElementById('auto-clicker-cost').innerText = autoClickerCost;
+    saveToLocalStorage();
 }
 
 function saveToLocalStorage() {
