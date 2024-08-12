@@ -8,7 +8,6 @@ function updateUpgradeCost() {
     document.getElementById('upgrade-cost').innerText = upgradeCost;
 }
 
-
 function clickCookie() {
     cookies += clickValue;
     document.getElementById('cookie-count').innerText = cookies;
@@ -21,13 +20,11 @@ function clickCookie() {
         document.getElementById('cookie').classList.remove('clicked');
     }, 200); // Tempo deve ser igual à duração da transição em milissegundos
     saveToLocalStorage();
-    
 }
 
-function resetlocalstorage() {
+function resetLocalStorage() {
     localStorage.clear();
     location.reload();
-
 }
 
 function buyUpgrade() {
@@ -55,7 +52,8 @@ function buyUpgrade() {
                 const modalContainer = document.querySelector('.swal2-container');
                 modalContainer.style.position = 'fixed';
             }
-        });    } else {
+        });
+    } else {
         Swal.fire({
             showConfirmButton: false,
             timer: 1500,
@@ -75,6 +73,7 @@ function buyUpgrade() {
         });
     }
 }
+
 function buyAutoClicker() {
     const autoClickerCost = 50 * Math.pow(2, autoClickers);
     if (cookies >= autoClickerCost) {
@@ -101,7 +100,7 @@ function buyAutoClicker() {
                 modalContainer.style.position = 'fixed';
             }
         });
-        } else {
+    } else {
         Swal.fire({
             imageUrl: "https://img.freepik.com/vetores-premium/rosto-de-emoji-pensativo-e-triste-ou-emoticon-3d-decepcionado_248162-149.jpg",
             imageWidth: 400,
@@ -143,8 +142,15 @@ function saveToLocalStorage() {
     document.getElementById('cookie-count').innerText = cookies;
 }
 
+// Função para iniciar todos os auto clickers salvos
+function startSavedAutoClickers() {
+    for (let i = 0; i < autoClickers; i++) {
+        startAutoClicker();
+    }
+}
 
-
-// Chama esta função para inicializar o custo do upgrade
+// Inicialização ao carregar a página
 updateUpgradeCost();
-saveToLocalStorage()
+updateAutoClickerCost();
+document.getElementById('cookie-count').innerText = cookies;
+startSavedAutoClickers(); // Inicia os auto clickers salvos
