@@ -4,6 +4,7 @@
 
 **Sorreal Clicker** é um jogo estilo "clicker", onde o jogador clica em um cookie (chamado de *Sorreais*) para coletar pontos, compra upgrades e auto-clickers para aumentar a produção de pontos automaticamente. Os dados são salvos no `localStorage`, permitindo que o progresso seja mantido mesmo após recarregar a página.
 
+- __Link para acesso:__ https://icrowleyshr.github.io/SorrealClicker/
 ## Funcionalidades
 
 - **Clique no Cookie**: Clique no cookie para coletar Sorreais (pontos).
@@ -28,7 +29,7 @@
 
 1. Clone este repositório:
 
-    git clone https://github.com/seu-usuario/sorreal-clicker.git
+    git clone https://github.com/iCrowleySHR/SorrealClicker.git
 
 2. Navegue até o diretório do projeto:
 
@@ -43,4 +44,4 @@
 - **Notificações**: As interações são notificadas através de SweetAlert2, com animações customizadas.
 - **Armazenamento Local**: Todos os dados do jogo são armazenados no `localStorage` do navegador, garantindo que o progresso seja mantido.
 
-Desenvolvido por 
+Desenvolvido por Gustavo Gualda e João Paulo
